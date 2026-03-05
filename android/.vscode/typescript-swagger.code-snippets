@@ -1,0 +1,17 @@
+{
+  "Swagger API Endpoint Description": {
+    "prefix": "swaggerdoc",
+    "body": [
+      "✅ ${1:METHOD} /${2:endpoint}",
+      "- Descripción: ${3:Descripción del endpoint}",
+      "- Body:${4}",
+      "\t{${5:\n\t  \"campo\": \"valor\"\n\t}}",
+      "- Headers:${6}",
+      "\t${7:Authorization: Bearer <token>}",
+      "- Respuesta:${8}",
+      "\t{${9:\n\t  \"campo\": \"respuesta\"\n\t}}",
+      ""
+    ],
+    "description": "Plantilla para documentar endpoint Swagger"
+  }
+}

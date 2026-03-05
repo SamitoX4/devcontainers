@@ -1,0 +1,92 @@
+{
+  "Generate folder structure for Node + TS project": {
+    "prefix": "nestjs-generate-structure",
+    "body": [
+      "mkdir -p src/database \\",
+      "src/modules/auth/guards/jwt-auth \\",
+      "src/modules/auth/helpers \\",
+      "src/modules/auth/strategies \\",
+      "src/modules/users/dto && \\",
+      "",
+      "touch \\",
+      "src/database/database.module.ts \\",
+      "src/modules/auth/guards/jwt-auth/jwt-auth.guard.spec.ts \\",
+      "src/modules/auth/guards/jwt-auth/jwt-auth.guard.ts \\",
+      "src/modules/auth/helpers/jwt-helper.service.ts \\",
+      "src/modules/auth/strategies/jwt.strategy.ts \\",
+      "src/modules/auth/auth.controller.spec.ts \\",
+      "src/modules/auth/auth.controller.ts \\",
+      "src/modules/auth/auth.module.ts \\",
+      "src/modules/users/dto/login.dto.ts"
+    ],
+    "description": "Crea la estructura base de carpetas y archivos para un proyecto Node.js con TypeScript."
+  },
+
+  "Generate project structure with mkdir and touch": {
+    "prefix": "nodejs-ts-generate-structure",
+    "body": [
+      "# Crear carpetas",
+      "mkdir -p src/common \\",
+      "src/config \\",
+      "src/core \\",
+      "src/database \\",
+      "src/modules/auth/guards/jwt-auth \\",
+      "src/modules/auth/strategies",
+      "",
+      "# Crear archivos",
+      "touch \\",
+      "src/config/env.config.ts \\",
+      "src/core/constants.ts \\",
+      "src/core/decorators.ts \\",
+      "src/core/param-decorators.ts \\",
+      "src/core/registerControllers.ts \\",
+      "src/database/mongoose.connect.ts \\",
+      "src/database/typeorm.config.ts \\",
+      "src/modules/auth/guards/jwt-auth/jwt-auth.guard.spec.ts \\",
+      "src/modules/auth/guards/jwt-auth/jwt-auth.guard.ts \\",
+      "src/modules/auth/strategies/jwt.strategy.ts \\",
+      "src/modules/auth/auth.controller.ts \\",
+      "src/modules/auth/auth.module.ts \\",
+      "src/modules/auth/auth.service.ts \\",
+      "src/app.controller.ts \\",
+      "src/app.factory.ts \\",
+      "src/app.middleware.ts \\",
+      "src/app.module.ts \\",
+      "src/app.service.ts"
+    ],
+    "description": "Genera la estructura de carpetas y archivos para un proyecto Node.js + TS"
+  },
+
+  "Generate folder and file structure for frontend": {
+    "prefix": "nextjs-generate-structure",
+    "body": [
+      "# Crear carpetas",
+      "mkdir -p src/api \\",
+      "src/app/login \\",
+      "src/app/register \\",
+      "src/components \\",
+      "src/context \\",
+      "src/types \\",
+      "src/utils",
+      "",
+      "# Crear archivos",
+      "touch \\",
+      "src/api/auth.ts \\",
+      "src/api/httpClient.ts \\",
+      "src/api/users.ts \\",
+      "src/app/login/page.ts \\",
+      "src/app/register/page.ts \\",
+      "src/app/favicon.ico \\",
+      "src/app/globals.css \\",
+      "src/app/layout.tsx \\",
+      "src/app/page.module.css \\",
+      "src/app/page.tsx \\",
+      "src/components/Navbar.tsx \\",
+      "src/context/AuthContext.tsx \\",
+      "src/types/auth.ts \\",
+      "src/types/user.ts \\",
+      "src/utils/storage.ts"
+    ],
+    "description": "Genera la estructura base de carpetas y archivos para el frontend"
+  }
+}

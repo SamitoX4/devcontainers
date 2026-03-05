@@ -1,0 +1,28 @@
+// .vscode/keybindings.json
+[
+  {
+    "key": "alt+j",
+    "command": "openInIntegratedTerminal"
+  },
+  {
+    "key": "alt+n",
+    "command": "explorer.newFile"
+  },
+  {
+    "key": "alt+f",
+    "command": "explorer.newFolder"
+  },
+  {
+    "key": "f5",
+    "command": "workbench.files.action.refreshFilesExplorer"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveAll"
+  },
+  {
+    "key": "ctrl+7",
+    "command": "editor.action.commentLine",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+]

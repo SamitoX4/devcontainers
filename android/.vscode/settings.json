@@ -1,0 +1,359 @@
+{
+  // Agrega más snippets aquí si es necesario
+  // Configure settings to be overridden for the dockercompose language.
+  "editor.tabSize": 2,
+  // Specifies the color theme used in the workbench.
+  "workbench.colorTheme": "Tokyo Night",
+  // Specifies the file icon theme used in the workbench or 'null' to not show any file icons.
+  //  - null: No file icons
+  //  - vs-minimal
+  //  - vs-seti
+  //  - eq-material-theme-icons
+  //  - eq-material-theme-icons-darker
+  //  - eq-material-theme-icons-palenight
+  //  - eq-material-theme-icons-ocean
+  //  - eq-material-theme-icons-light
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.activeIconPack": "react_redux",
+  // Include parentheses around a sole arrow function parameter
+  "prettier.arrowParens": "always",
+  // When enabled, will trim trailing whitespace when saving a file.
+  "files.trimTrailingWhitespace": true,
+  // Controls how lines should wrap.
+  //  - off: Lines will never wrap.
+  //  - on: Lines will wrap at the viewport width.
+  //  - wordWrapColumn: Lines will wrap at `editor.wordWrapColumn`.
+  //  - bounded: Lines will wrap at the minimum of viewport and `editor.wordWrapColumn`.
+  "editor.wordWrap": "wordWrapColumn",
+  "editor.wordWrapColumn": 120,
+  // Config TODO Highlight
+  "todohighlight.keywords": [
+    "DEBUG:",
+    "REVIEW:",
+    {
+      "text": "COMMENT:",
+      "color": "#00C700",
+      "border": "1px solid #00C700",
+      "borderRadius": "2px", //COMMENT: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "TODO:",
+      "color": "#ddbc08",
+      "border": "1px solid #ddbc08",
+      "borderRadius": "2px", //TODO: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "FIXME:",
+      "color": "#e10f40",
+      "border": "1px solid #e10f40",
+      "borderRadius": "2px", //FIXME: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "DEBUG:",
+      "color": "#af09e0",
+      "border": "1px solid #af09e0",
+      "borderRadius": "2px", //DEBUG: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "REVIEW:",
+      "color": "#079de2",
+      "border": "1px solid #079de2",
+      "borderRadius": "2px", //REVIEW: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "HACK:",
+      "color": "#3b4fa4",
+      "border": "1px solid #3b4fa4",
+      "borderRadius": "2px", //HACK: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "NOTE:",
+      "color": "#4e7580",
+      "border": "1px solid #4e7580",
+      "borderRadius": "2px", //NOTE: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "WARNING:",
+      "color": "#FF7400",
+      "border": "1px solid #FF7400",
+      "borderRadius": "2px", //WARNING: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    },
+    {
+      "text": "DANGER:",
+      "color": "red",
+      "border": "1px solid red",
+      "borderRadius": "2px", //DANGER: using borderRadius along with `border` or you will see nothing change
+      "backgroundColor": "rgba(0,0,0,.2)"
+      //other styling properties goes here ...
+    }
+  ],
+
+  "better-comments.tags": [
+    {
+      "tag": "!",
+      "color": "#F90000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "?",
+      "color": "#0E2AAA",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "//",
+      "color": "#ddbc08",
+      // "color": "#31B63A",
+      "strikethrough": true,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "todo",
+      "color": "#F9B000",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "^",
+      "color": "#F9CD00",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "~",
+      "color": "#af09e0",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "*",
+      "color": "#00C700",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "|",
+      "color": "#e10f40",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": ">",
+      "color": "#FF7400",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "<",
+      "color": "#079de2",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "$",
+      "color": "#3b4fa4",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "%",
+      "color": "#4e7580",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "TODO:",
+      "color": "#ddbc08",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "FIXME:",
+      "color": "#e10f40",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "DEBUG:",
+      "color": "#af09e0",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "REVIEW:",
+      "color": "#079de2",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "HACK:",
+      "color": "#3b4fa4",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "NOTE:",
+      "color": "#4e7580",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "WARNING:",
+      "color": "#FF7400",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    },
+    {
+      "tag": "DANGER:",
+      "color": "red",
+      "strikethrough": false,
+      "underline": false,
+      "backgroundColor": "transparent",
+      "bold": false,
+      "italic": false
+    }
+  ],
+
+  "terminal.integrated.allowMnemonics": true,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "better-comments.multilineComments": true,
+  "better-comments.highlightPlainText": false,
+  "terminal.integrated.fontLigatures.fallbackLigatures": [
+    "<--",
+    "<---",
+    "<<-",
+    "<-",
+    "->",
+    "->>",
+    "-->",
+    "--->",
+    "<==",
+    "<===",
+    "<<=",
+    "<=",
+    "=>",
+    "=>>",
+    "==>",
+    "===>",
+    ">=",
+    ">>=",
+    "<->",
+    "<-->",
+    "<--->",
+    "<---->",
+    "<=>",
+    "<==>",
+    "<===>",
+    "<====>",
+    "::",
+    ":::",
+    "<~~",
+    "</",
+    "</>",
+    "/>",
+    "~~>",
+    "==",
+    "!=",
+    "/=",
+    "~=",
+    "<>",
+    "===",
+    "!==",
+    "!===",
+    "<:",
+    ":=",
+    "*=",
+    "*+",
+    "<*",
+    "<*>",
+    "*>",
+    "<|",
+    "<|>",
+    "|>",
+    "+*",
+    "=*",
+    "=:",
+    ":>",
+    "/*",
+    "*/",
+    "+++",
+    "<!--",
+    "<!---"
+  ],
+}
