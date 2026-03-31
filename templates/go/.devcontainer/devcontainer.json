@@ -1,0 +1,41 @@
+{
+  "name": "Go DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "TZ": "America/Lima",
+    "GOROOT": "/usr/local/go",
+    "GOPATH": "/root/go"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "golang.go",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "usernamehw.errorlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal"
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "go.gopath": "/root/go",
+        "go.goroot": "/usr/local/go"
+      }
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "root"
+}

@@ -1,0 +1,44 @@
+{
+  "name": "Laravel DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "TZ": "America/Lima"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "mehedidracula.php-namespace-resolver",
+        "junstyle.php-intelephense",
+        "bmewburn.vscode-intelephense-client",
+        "calebporzio.pariedit",
+        "devsense.phalcon-php-tools",
+        "kiwir.vscode-laravel-extra-intellisense",
+        "onecentlin.laravel5-snippets",
+        "onecentlin.laravel-blade",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "usernamehw.errorlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal"
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/bash"
+      }
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "root"
+}

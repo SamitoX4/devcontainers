@@ -1,0 +1,47 @@
+{
+  "name": "Node.js DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "TZ": "America/Lima"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "GraphQL.vscode-graphql",
+        "GraphQL.vscode-graphql-syntax",
+        "redhat.vscode-yaml",
+        "mongodb.mongodb-vscode",
+        "pmneo.tsimporter",
+        "quicktype.quicktype",
+        "yoavbls.pretty-ts-errors",
+        "vivaxy.vscode-conventional-commits",
+        "eamodio.gitlens",
+        "usernamehw.errorlens"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal"
+          },
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/zsh"
+      }
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "node"
+}

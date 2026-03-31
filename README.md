@@ -1,155 +1,103 @@
-# DevContainers
+# DevContainers Templates
 
-Collection of **development containers** for different technologies and
-stacks.
+Collection of **development container templates** for different technologies.
 
-This repository provides **ready-to-use development environments** based
-on **Docker** and **VS Code Dev Containers**.\
-The goal is to allow developers to start working quickly without
-installing complex local dependencies.
+This repository contains ready-to-use development environments based on **Docker** and **VS Code Dev Containers**.
 
-Each environment is:
+Each template provides:
 
--   Isolated
--   Reproducible
--   Easy to launch
--   Ready for collaboration
+-   Isolated environment
+-   Reproducible setup
+-   Easy launch
+-   Pre-configured tools
 
-Over time, additional development environments will be added to support
-more technologies and workflows.
+## Available Templates
 
-------------------------------------------------------------------------
+| Template | Description |
+|----------|-------------|
+| `nodejs` | Node.js with TypeScript, npm/pnpm |
+| `android` | Java 17 + Android SDK |
+| `react-native` | Node.js + React Native + Android SDK |
+| `java` | Java 17 + Maven |
+| `laravel` | PHP 8.3 + Composer |
+| `rust` | Rust (stable) + Cargo |
+| `go` | Go 1.22 |
+| `python` | Python 3.12 |
 
-# Available Environments
+## Quick Start
 
-  -----------------------------------------------------------------------
-  Environment                         Description
-  ----------------------------------- -----------------------------------
-  `android-react-native`              React Native + Android development
-                                      environment with Node.js and Java
+### Using the CLI (Recommended)
 
-  -----------------------------------------------------------------------
+Install the CLI:
 
-Future environments may include:
+```bash
+curl -fsSL https://samitox4.github.io/devc/install.sh | bash
+```
 
--   Next.js
--   Node.js APIs
--   NestJS
--   PostgreSQL
--   Redis
--   Python
--   Golang
--   Fullstack environments
+Generate a devcontainer:
 
-------------------------------------------------------------------------
+```bash
+devc gen
+# Interactive mode - just follow the prompts
 
-# Repository Structure
+# Or with flags
+devc gen --template nodejs --name my-project
+```
 
-    devcontainers/
-    │
-    ├─ android-react-native/
-    │   ├─ .devcontainer/
-    │   └─ README.md
-    │
-    └─ README.md
+See [devc CLI](https://github.com/SamitoX4/devc) for more information.
 
-Each environment folder contains its own:
+### Manual Setup
 
--   DevContainer configuration
--   Docker configuration
--   Setup scripts
--   Documentation
+1. Open your project folder:
 
-------------------------------------------------------------------------
+```bash
+cd mi-proyecto
+```
 
-# Requirements
+2. Copy the template:
 
-To use these environments you need:
+```bash
+cp -r templates/nodejs/.devcontainer .devcontainer
+```
+
+3. Open in VS Code and press `F1` → `Dev Containers: Reopen in Container`
+
+## Requirements
 
 -   Docker
 -   Visual Studio Code
 -   VS Code Dev Containers Extension
 
-Extension ID:
+Extension ID: `ms-vscode-remote.remote-containers`
 
-    ms-vscode-remote.remote-containers
+## Template Structure
 
-------------------------------------------------------------------------
+Each template includes:
 
-# How to Use a DevContainer
+-   `.devcontainer/devcontainer.json` - VS Code configuration
+-   `.devcontainer/docker-compose.yml` - Container services
+-   `.devcontainer/Dockerfile` - Container image
+-   `.devcontainer/scripts/` - Setup scripts
 
-### 1 Clone the repository
+## Shared Tools
 
-    git clone https://github.com/YOUR_USERNAME/devcontainers.git
+All templates include:
 
-### 2 Open the desired environment
+-   **Doppler** - Environment variables management
+-   **gcloud** - Google Cloud CLI
+-   **opencode** - AI coding assistant
+-   **claude-ai** - Claude AI CLI
+-   **Zsh + Oh My Zsh** - Enhanced shell
 
-Example:
+## Git Configuration
 
-    devcontainers/android-react-native
+The devcontainer will use your Git user configured in the CLI. If setting up manually, the following environment variables are used:
 
-Open that folder with **VS Code**.
+```bash
+GIT_USER_NAME=your-name
+GIT_USER_EMAIL=your-email@example.com
+```
 
-------------------------------------------------------------------------
-
-### 3 Reopen inside the container
-
-Press:
-
-    F1
-
-Run:
-
-    Dev Containers: Reopen in Container
-
-VS Code will automatically:
-
-1.  Build the container
-2.  Install required extensions
-3.  Configure the development environment
-4.  Mount the workspace
-
-------------------------------------------------------------------------
-
-# Adding New Environments
-
-New environments can be added as separate folders.
-
-Example:
-
-    devcontainers/
-       android-react-native/
-       nextjs/
-       node-api/
-       postgres/
-       python/
-
-Typical structure for a new environment:
-
-    environment-name/
-       .devcontainer/
-       Dockerfile
-       docker-compose.yml
-       README.md
-
-Each environment should include its own documentation explaining how to
-use it.
-
-------------------------------------------------------------------------
-
-# Why DevContainers?
-
-Development containers provide:
-
-✔ Reproducible environments\
-✔ Easy onboarding for developers\
-✔ Isolation of dependencies\
-✔ No need to install SDKs locally\
-✔ Consistent development across machines\
-✔ Works with GitHub Codespaces
-
-------------------------------------------------------------------------
-
-# License
+## License
 
 MIT
