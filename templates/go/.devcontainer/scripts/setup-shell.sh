@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.bashrc
 echo 'export GOROOT=/usr/local/go' >> ~/.bashrc
 echo 'export GOPATH=/root/go' >> ~/.bashrc
 echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> ~/.bashrc

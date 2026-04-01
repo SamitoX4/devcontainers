@@ -3,6 +3,8 @@ set -e
 
 echo 'source $NVM_DIR/nvm.sh' >> /home/node/.bashrc
 echo 'source $NVM_DIR/nvm.sh' >> /home/node/.zshrc
+echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/node/.bashrc
+echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/node/.zshrc
 
 cat >> /home/node/.bashrc << 'EOF'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
