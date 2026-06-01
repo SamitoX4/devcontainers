@@ -1,10 +1,11 @@
 {
-  "name": "Android DevContainer",
+  "name": "Android Java DevContainer",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
   "containerEnv": {
     "TZ": "America/Lima",
+    "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64",
     "ANDROID_SDK_ROOT": "/usr/local/android-sdk"
   },
   "customizations": {
@@ -20,7 +21,7 @@
         "usernamehw.errorlens"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "bash": {
             "path": "/bin/bash",
@@ -31,7 +32,11 @@
             "icon": "terminal"
           }
         },
-        "terminal.integrated.shell.linux": "/bin/bash"
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
+        "java.configuration.runtimes": [
+          {"name": "JavaSE-17", "path": "/usr/lib/jvm/java-17-openjdk-amd64", "default": true}
+        ]
       }
     }
   },

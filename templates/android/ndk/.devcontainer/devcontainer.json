@@ -1,0 +1,48 @@
+{
+  "name": "Android NDK DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "TZ": "America/Lima",
+    "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64",
+    "ANDROID_SDK_ROOT": "/usr/local/android-sdk"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "vscjava.vscode-java-pack",
+        "redhat.java",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "ms-vscode.cpptools",
+        "ms-vscode.cmake-tools",
+        "twxs.cmake"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal"
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
+        "java.configuration.runtimes": [
+          {"name": "JavaSE-17", "path": "/usr/lib/jvm/java-17-openjdk-amd64", "default": true}
+        ],
+        "C_Cpp.default.intelliSenseMode": "linux-clang-x64"
+      }
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "root"
+}

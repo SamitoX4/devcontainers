@@ -2,11 +2,7 @@
 set -e
 
 apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    python3 \
-    python3-pip \
     openjdk-17-jdk \
-    gradle \
     wget \
     unzip \
     git \
@@ -19,8 +15,14 @@ apt-get update && apt-get install -y --no-install-recommends \
     zsh-common \
     fonts-firacode \
     fonts-powerline \
-    libatk-bridge2.0-0 \
-    libgtk-3-0 \
-    libgbm1
+    python3 \
+    python3-pip \
+    ca-certificates \
+    libc6 \
+    libstdc++6 \
+    xz-utils \
+    zip \
+    libglu1-mesa \
+    chromium-browser
 
 rm -rf /var/lib/apt/lists/*

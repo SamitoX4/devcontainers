@@ -1,0 +1,51 @@
+{
+  "name": "Android Flutter DevContainer",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+  "containerEnv": {
+    "TZ": "America/Lima",
+    "JAVA_HOME": "/usr/lib/jvm/java-17-openjdk-amd64",
+    "ANDROID_SDK_ROOT": "/usr/local/android-sdk",
+    "CHROME_EXECUTABLE": "/usr/bin/chromium"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode-remote.remote-containers",
+        "ms-azuretools.vscode-docker",
+        "vscjava.vscode-java-pack",
+        "vscjava.vscode-maven",
+        "redhat.java",
+        "redhat.vscode-yaml",
+        "eamodio.gitlens",
+        "usernamehw.errorlens",
+        "Dart-Code.dart-code",
+        "Dart-Code.flutter",
+        "alexisvt.flutter-snippets"
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "bash": {
+            "path": "/bin/bash",
+            "icon": "terminal-bash"
+          },
+          "zsh": {
+            "path": "/bin/zsh",
+            "icon": "terminal"
+          }
+        },
+        "terminal.integrated.shell.linux": "/bin/zsh",
+        "java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
+        "java.configuration.runtimes": [
+          {"name": "JavaSE-17", "path": "/usr/lib/jvm/java-17-openjdk-amd64", "default": true}
+        ],
+        "dart.flutterSdkPath": "/opt/flutter",
+        "dart.sdkPath": "/opt/flutter/bin/cache/dart-sdk"
+      }
+    }
+  },
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "root"
+}

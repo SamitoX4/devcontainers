@@ -1,5 +1,5 @@
 {
-  "name": "React Native DevContainer",
+  "name": "Android React Native DevContainer",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
   "workspaceFolder": "/workspace",
