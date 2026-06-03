@@ -13,16 +13,26 @@ Each template provides:
 
 ## Available Templates
 
+### General
+
 | Template | Description |
 |----------|-------------|
 | `nodejs` | Node.js with TypeScript, npm/pnpm |
-| `android` | Java 17 + Android SDK |
-| `react-native` | Node.js + React Native + Android SDK |
 | `java` | Java 17 + Maven |
 | `laravel` | PHP 8.3 + Composer |
 | `rust` | Rust (stable) + Cargo |
 | `go` | Go 1.22 |
 | `python` | Python 3.12 |
+
+### Android Stack
+
+| Template | Description | Customizable Versions |
+|----------|-------------|----------------------|
+| `android/java` | Java 17 + Android SDK | API Level, Build Tools, NDK, CMD Line Tools |
+| `android/kotlin-native` | Kotlin/Native + Android SDK | Kotlin, API Level, Build Tools, NDK, CMD Line Tools |
+| `android/ndk` | Android NDK + CMake | API Level, Build Tools, NDK, CMake, CMD Line Tools |
+| `android/react-native` | Node.js + React Native + Android SDK | Node version, API Level, Build Tools, NDK, CMD Line Tools |
+| `android/flutter` | Flutter + Android SDK | Flutter branch, API Level, Build Tools, NDK, CMD Line Tools |
 
 ## Quick Start
 
@@ -34,14 +44,18 @@ Install the CLI:
 curl -fsSL https://samitox4.github.io/devc/install.sh | bash
 ```
 
-Generate a devcontainer:
+Generate a devcontainer interactively:
 
 ```bash
 devc gen
-# Interactive mode - just follow the prompts
+# Follow the prompts to select template, name, and optional versions
+```
 
-# Or with flags
+Or with flags:
+
+```bash
 devc gen --template nodejs --name my-project
+devc gen --template android/kotlin-native --name my-native-app
 ```
 
 See [devc CLI](https://github.com/SamitoX4/devc) for more information.
@@ -76,8 +90,24 @@ Each template includes:
 
 -   `.devcontainer/devcontainer.json` - VS Code configuration
 -   `.devcontainer/docker-compose.yml` - Container services
--   `.devcontainer/Dockerfile` - Container image
+-   `.devcontainer/Dockerfile` - Container image (supports parameterized versions via `ARG`)
 -   `.devcontainer/scripts/` - Setup scripts
+
+## Parameterized Versions
+
+Android stack templates support **customizable versions** via Docker `ARG`s. When using `devc gen` interactively, you can pick versions from a curated list. You can also override them manually:
+
+```bash
+# Using docker compose build args
+docker compose -f .devcontainer/docker-compose.yml build --build-arg ANDROID_API_LEVEL=36 --build-arg KOTLIN_VERSION=2.1.0
+
+# Or set environment variables before building
+export ANDROID_API_LEVEL=36
+export BUILD_TOOLS_VERSION=36.0.0
+docker compose -f .devcontainer/docker-compose.yml build
+```
+
+Available parameters per template are documented in the table above.
 
 ## Shared Tools
 
