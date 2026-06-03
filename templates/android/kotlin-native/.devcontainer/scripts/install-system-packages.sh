@@ -24,7 +24,7 @@ apt-get update && apt-get install -y --no-install-recommends \
 rm -rf /var/lib/apt/lists/*
 
 # Install Kotlin compiler standalone
-KOTLIN_VERSION="2.0.21"
+KOTLIN_VERSION="${KOTLIN_VERSION:-2.0.21}"
 echo "Installing Kotlin compiler ${KOTLIN_VERSION}..."
 TMP_DIR=$(mktemp -d)
 cd "$TMP_DIR"

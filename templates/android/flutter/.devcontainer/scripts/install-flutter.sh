@@ -2,9 +2,10 @@
 set -e
 
 FLUTTER_DIR="/opt/flutter"
+FLUTTER_BRANCH="${FLUTTER_BRANCH:-stable}"
 
-echo "Clonando Flutter stable..."
-git clone https://github.com/flutter/flutter.git -b stable --depth 1 "$FLUTTER_DIR"
+echo "Clonando Flutter ${FLUTTER_BRANCH}..."
+git clone https://github.com/flutter/flutter.git -b "${FLUTTER_BRANCH}" --depth 1 "$FLUTTER_DIR"
 
 export PATH="$PATH:${FLUTTER_DIR}/bin"
 

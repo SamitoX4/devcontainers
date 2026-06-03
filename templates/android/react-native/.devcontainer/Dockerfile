@@ -1,6 +1,19 @@
 ARG VARIANT=22-bookworm
 FROM node:${VARIANT}
 
+# Build arguments for version customization
+ARG NODE_MAJOR_VERSION=22
+ARG ANDROID_API_LEVEL=34
+ARG BUILD_TOOLS_VERSION=34.0.0
+ARG NDK_VERSION=26.1.10909125
+ARG CMDLINE_TOOLS_VERSION=7302050_latest
+
+# Expose as environment variables so scripts can read them
+ENV NODE_MAJOR_VERSION=${NODE_MAJOR_VERSION}
+ENV ANDROID_API_LEVEL=${ANDROID_API_LEVEL}
+ENV BUILD_TOOLS_VERSION=${BUILD_TOOLS_VERSION}
+ENV NDK_VERSION=${NDK_VERSION}
+ENV CMDLINE_TOOLS_VERSION=${CMDLINE_TOOLS_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y passwd
@@ -24,7 +37,7 @@ COPY --chown=node:node ./scripts/install-nvm.sh /home/node/install-nvm.sh
 RUN chmod +x /home/node/install-nvm.sh
 
 USER node
-RUN NODE_MAJOR_VERSION=22 /home/node/install-nvm.sh
+RUN /home/node/install-nvm.sh
 
 COPY --chown=node:node ./scripts/install-global-packages.sh /home/node/install-global-packages.sh
 RUN chmod +x /home/node/install-global-packages.sh && /home/node/install-global-packages.sh
