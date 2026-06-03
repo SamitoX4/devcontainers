@@ -71,7 +71,12 @@ cd mi-proyecto
 2. Copy the template:
 
 ```bash
+# General templates
 cp -r templates/nodejs/.devcontainer .devcontainer
+
+# Nested Android templates
+cp -r templates/android/kotlin-native/.devcontainer .devcontainer
+cp -r templates/android/flutter/.devcontainer .devcontainer
 ```
 
 3. Open in VS Code and press `F1` → `Dev Containers: Reopen in Container`
