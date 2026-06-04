@@ -15,14 +15,14 @@ Each template provides:
 
 ### General
 
-| Template | Description |
-|----------|-------------|
-| `nodejs` | Node.js with TypeScript, npm/pnpm |
-| `java` | Java 17 + Maven |
-| `laravel` | PHP 8.3 + Composer |
-| `rust` | Rust (stable) + Cargo |
-| `go` | Go 1.22 |
-| `python` | Python 3.12 |
+| Template | Description | Customizable Versions |
+|----------|-------------|----------------------|
+| `nodejs` | Node.js with TypeScript, npm/pnpm | Node version, Base image variant |
+| `java` | Java 17 + Maven | Maven version |
+| `laravel` | PHP 8.3 + Composer | PHP version |
+| `rust` | Rust (stable) + Cargo | Rust toolchain |
+| `go` | Go 1.22 | Go version |
+| `python` | Python 3.12 + pip | Python version |
 
 ### Android Stack
 
@@ -100,7 +100,7 @@ Each template includes:
 
 ## Parameterized Versions
 
-Android stack templates support **customizable versions** via Docker `ARG`s. When using `devc gen` interactively, you can pick versions from a curated list. You can also override them manually:
+Templates support **customizable versions** via Docker `ARG`s. When using `devc gen` interactively, you can pick versions from a curated list. You can also override them manually:
 
 ```bash
 # Using docker compose build args
@@ -109,6 +109,8 @@ docker compose -f .devcontainer/docker-compose.yml build --build-arg ANDROID_API
 # Or set environment variables before building
 export ANDROID_API_LEVEL=36
 export BUILD_TOOLS_VERSION=36.0.0
+export PYTHON_VERSION=3.13
+export GO_VERSION=1.23.0
 docker compose -f .devcontainer/docker-compose.yml build
 ```
 
