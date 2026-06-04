@@ -16,10 +16,21 @@ echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >> ~/.
 
 source $NVM_DIR/nvm.sh
 
-nvm install "$NODE_MAJOR_VERSION"
+# Support comma-separated list of versions (e.g. "20,22")
+IFS=',' read -ra VERSIONS <<< "$NODE_MAJOR_VERSION"
+
+for v in "${VERSIONS[@]}"; do
+    v=$(echo "$v" | xargs) # trim whitespace
+    nvm install "$v"
+done
+
 nvm install lts/*
 
-nvm alias default "$NODE_MAJOR_VERSION"
+# Use the last selected version as default
+DEFAULT_VERSION="${VERSIONS[-1]}"
+DEFAULT_VERSION=$(echo "$DEFAULT_VERSION" | xargs) # trim whitespace
+
+nvm alias default "$DEFAULT_VERSION"
 nvm use default
 
 npm config delete prefix
