@@ -1,5 +1,8 @@
 ARG VARIANT=22-bullseye
+ARG NODE_MAJOR_VERSION=22
 FROM node:${VARIANT}
+
+ENV NODE_MAJOR_VERSION=${NODE_MAJOR_VERSION}
 
 RUN apt-get update && apt-get install -y passwd
 
@@ -15,7 +18,7 @@ COPY --chown=node:node ./scripts/install-nvm.sh /home/node/install-nvm.sh
 RUN chmod +x /home/node/install-nvm.sh
 
 USER node
-RUN NODE_MAJOR_VERSION=22 /home/node/install-nvm.sh
+RUN /home/node/install-nvm.sh
 
 COPY --chown=node:node ./scripts/install-global-packages.sh /home/node/install-global-packages.sh
 RUN chmod +x /home/node/install-global-packages.sh && /home/node/install-global-packages.sh

@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        RUST_TOOLCHAIN: ${RUST_TOOLCHAIN:-stable}
 
     volumes:
       - ..:/workspace:cached

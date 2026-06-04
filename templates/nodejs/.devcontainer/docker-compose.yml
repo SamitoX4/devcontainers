@@ -5,6 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        VARIANT: ${NODE_VARIANT:-22-bullseye}
+        NODE_MAJOR_VERSION: ${NODE_MAJOR_VERSION:-22}
 
     volumes:
       - ..:/workspace:cached

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-GO_VERSION="1.22.0"
+GO_VERSION="${GO_VERSION:-1.22.0}"
 TMP_DIR=$(mktemp -d)
 cd $TMP_DIR
 

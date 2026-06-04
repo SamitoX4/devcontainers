@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-MAVEN_VERSION="3.9.6"
+MAVEN_VERSION="${MAVEN_VERSION:-3.9.6}"
 TMP_DIR=$(mktemp -d)
 cd $TMP_DIR
 

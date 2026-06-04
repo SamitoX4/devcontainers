@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        MAVEN_VERSION: ${MAVEN_VERSION:-3.9.6}
 
     volumes:
       - ..:/workspace:cached

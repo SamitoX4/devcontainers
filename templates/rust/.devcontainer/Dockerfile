@@ -1,4 +1,7 @@
+ARG RUST_TOOLCHAIN=stable
 FROM debian:bullseye
+
+ENV RUST_TOOLCHAIN=${RUST_TOOLCHAIN}
 
 RUN apt-get update && apt-get install -y passwd
 

@@ -1,4 +1,7 @@
+ARG GO_VERSION=1.22.0
 FROM debian:bullseye
+
+ENV GO_VERSION=${GO_VERSION}
 
 RUN apt-get update && apt-get install -y passwd
 

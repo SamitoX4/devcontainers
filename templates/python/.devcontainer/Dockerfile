@@ -1,4 +1,5 @@
-FROM python:3.12
+ARG PYTHON_VERSION=3.12
+FROM python:${PYTHON_VERSION}
 
 RUN apt-get update && apt-get install -y passwd
 

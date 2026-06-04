@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        GO_VERSION: ${GO_VERSION:-1.22.0}
 
     volumes:
       - ..:/workspace:cached

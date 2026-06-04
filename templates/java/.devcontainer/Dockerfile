@@ -1,4 +1,7 @@
+ARG MAVEN_VERSION=3.9.6
 FROM debian:bullseye
+
+ENV MAVEN_VERSION=${MAVEN_VERSION}
 
 RUN apt-get update && apt-get install -y passwd
 
