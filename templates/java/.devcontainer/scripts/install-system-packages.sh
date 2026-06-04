@@ -2,8 +2,7 @@
 set -e
 
 apt-get update && apt-get install -y --no-install-recommends \
-    openjdk-17-jdk \
-    maven \
+    openjdk-${JAVA_VERSION:-17}-jdk \
     wget \
     unzip \
     git \

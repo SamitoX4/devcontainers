@@ -1,6 +1,9 @@
+ARG JAVA_VERSION=17
 ARG MAVEN_VERSION=3.9.6
 FROM debian:bullseye
 
+ENV JAVA_VERSION=${JAVA_VERSION}
+ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk-amd64
 ENV MAVEN_VERSION=${MAVEN_VERSION}
 
 RUN apt-get update && apt-get install -y passwd
