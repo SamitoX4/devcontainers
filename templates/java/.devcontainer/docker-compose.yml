@@ -16,3 +16,5 @@ services:
     command: sleep infinity
 
     __NETWORK_MODE__
+    __NETWORKS_SERVICE__
+__NETWORKS_TOP__
