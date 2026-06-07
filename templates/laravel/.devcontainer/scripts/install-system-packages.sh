@@ -10,6 +10,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    gnupg \
     zsh \
     zsh-common \
     fonts-firacode \

@@ -35,4 +35,10 @@ rm -f ${font_name}
 
 echo "DevContainer configurado correctamente"
 
+
+# Clean up NVM references in .zshrc for non-Node.js templates
+if [ ! -f "$HOME/.nvm/nvm.sh" ]; then
+    awk '/# NVM Configuration/{skip=1; next} skip && /source [$]NVM_DIR\/nvm.sh/{skip=0; next} skip{next} 1' ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
+fi
+
 exec zsh

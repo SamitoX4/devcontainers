@@ -21,7 +21,7 @@
         "usernamehw.errorlens"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "bash": {
             "path": "/bin/bash",
@@ -31,8 +31,7 @@
             "path": "/bin/zsh",
             "icon": "terminal"
           }
-        },
-        "terminal.integrated.shell.linux": "/bin/bash"
+        }
       }
     }
   },

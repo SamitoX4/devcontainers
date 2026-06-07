@@ -19,7 +19,7 @@
         "usernamehw.errorlens"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "bash": {
             "path": "/bin/bash",
@@ -30,7 +30,6 @@
             "icon": "terminal"
           }
         },
-        "terminal.integrated.shell.linux": "/bin/bash",
         "go.gopath": "/root/go",
         "go.goroot": "/usr/local/go"
       }

@@ -6,6 +6,7 @@ apt-get update && apt-get install -y --no-install-recommends \
     curl \
     wget \
     unzip \
+    gnupg \
     zsh \
     zsh-common \
     fonts-firacode \

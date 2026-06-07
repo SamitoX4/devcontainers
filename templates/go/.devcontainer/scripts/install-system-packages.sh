@@ -3,10 +3,12 @@ set -e
 
 apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    ca-certificates \
     curl \
     wget \
     unzip \
     git \
+    gnupg \
     zsh \
     zsh-common \
     fonts-firacode \

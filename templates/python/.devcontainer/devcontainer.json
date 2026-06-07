@@ -20,7 +20,7 @@
         "usernamehw.errorlens"
       ],
       "settings": {
-        "terminal.integrated.defaultProfile.linux": "bash",
+        "terminal.integrated.defaultProfile.linux": "zsh",
         "terminal.integrated.profiles.linux": {
           "bash": {
             "path": "/bin/bash",
@@ -31,7 +31,6 @@
             "icon": "terminal"
           }
         },
-        "terminal.integrated.shell.linux": "/bin/bash",
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.linting.enabled": true,
         "python.linting.pylintEnabled": true,

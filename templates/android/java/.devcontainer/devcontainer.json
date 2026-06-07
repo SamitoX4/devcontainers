@@ -32,7 +32,6 @@
             "icon": "terminal"
           }
         },
-        "terminal.integrated.shell.linux": "/bin/zsh",
         "java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
         "java.configuration.runtimes": [
           {"name": "JavaSE-17", "path": "/usr/lib/jvm/java-17-openjdk-amd64", "default": true}
