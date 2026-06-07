@@ -17,4 +17,4 @@ services:
 
     command: sleep infinity
 
-    network_mode: host
+    __NETWORK_MODE__
