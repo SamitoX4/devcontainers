@@ -1,32 +1,6 @@
 version: '3.8'
 
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        MYSQL_CLIENT_VERSION: ${MYSQL_CLIENT_VERSION:-8.0}
-        __SECURITY_ARGS__
-
-    volumes:
-      - ..:/workspace:cached
-
-    command: sleep infinity
-
-    environment:
-      - DB_HOST=db
-      - DB_PORT=3306
-      - DB_USER=developer
-      - DB_PASSWORD=developer
-      - DB_NAME=devdb
-
-    depends_on:
-      - db
-
-    __NETWORK_MODE__
-    __NETWORKS_SERVICE__
-
   db:
     image: mysql:8.0
     environment:
@@ -38,6 +12,8 @@ services:
       - db_data:/var/lib/mysql
     ports:
       - "3306:3306"
+
+    __NETWORKS_SERVICE__
 
 volumes:
   db_data:
