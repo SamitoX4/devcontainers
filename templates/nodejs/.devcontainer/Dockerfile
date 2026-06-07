@@ -10,8 +10,8 @@ ENV SUDO_MODE=${SUDO_MODE}
 ENV NODE_MAJOR_VERSION=${NODE_MAJOR_VERSION}
 
 # The user `node` already exists, just configure password and sudo
-RUN echo "root:${CONTAINER_PASSWORD}" | chpasswd && \
-    echo "node:${REMOTE_PASSWORD}" | chpasswd
+RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd && \
+    awk 'BEGIN{print "node:" ENVIRON["REMOTE_PASSWORD"]}' | chpasswd
 
 RUN if [ "${SUDO_MODE}" != "none" ]; then \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \

@@ -10,13 +10,13 @@ ENV GO_VERSION=${GO_VERSION}
 
 RUN apt-get update && apt-get install -y passwd sudo
 
-RUN echo "root:${CONTAINER_PASSWORD}" | chpasswd
+RUN awk \'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}\' | chpasswd
 
 RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" &>/dev/null; then \
         useradd -m -s /bin/bash "${REMOTE_USER}"; \
     fi && \
     if [ "${REMOTE_USER}" != "root" ]; then \
-        echo "${REMOTE_USER}:${REMOTE_PASSWORD}" | chpasswd; \
+        awk -v u="\${REMOTE_USER}" \'BEGIN{print u ":" ENVIRON["REMOTE_PASSWORD"]}\' | chpasswd; \
     fi
 
 RUN if [ "${SUDO_MODE}" != "none" ] && [ "${REMOTE_USER}" != "root" ]; then \
