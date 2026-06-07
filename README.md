@@ -23,6 +23,8 @@ Each template provides:
 | `rust` | Rust (stable) + Cargo | Rust toolchain | `developer` (user: `developer`) |
 | `go` | Go 1.22 | Go version | `developer` (user: `developer`) |
 | `python` | Python 3.12 + pip | Python version | `developer` (user: `developer`) |
+| `mysql` | Python 3.12 + MySQL client | MySQL client version | `developer` (user: `developer`) |
+| `postgre` | Python 3.12 + PostgreSQL client | PostgreSQL client version | `developer` (user: `developer`) |
 
 ### Android Stack
 

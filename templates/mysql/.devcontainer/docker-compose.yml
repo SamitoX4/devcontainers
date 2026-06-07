@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        MYSQL_CLIENT_VERSION: ${MYSQL_CLIENT_VERSION:-8.0}
+        __SECURITY_ARGS__
+
+    volumes:
+      - ..:/workspace:cached
+
+    command: sleep infinity
+
+    __NETWORK_MODE__
+    __NETWORKS_SERVICE__
+__NETWORKS_TOP__
