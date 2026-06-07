@@ -1,12 +1,26 @@
 ARG VARIANT=22-bullseye
 ARG NODE_MAJOR_VERSION=22
 FROM node:${VARIANT}
+__SECURITY_ARGS__
+ENV REMOTE_USER=${REMOTE_USER}
+ENV REMOTE_PASSWORD=${REMOTE_PASSWORD}
+ENV CONTAINER_PASSWORD=${CONTAINER_PASSWORD}
+ENV SUDO_MODE=${SUDO_MODE}
 
 ENV NODE_MAJOR_VERSION=${NODE_MAJOR_VERSION}
 
-RUN apt-get update && apt-get install -y passwd
+# The user `node` already exists, just configure password and sudo
+RUN echo "root:${CONTAINER_PASSWORD}" | chpasswd && \
+    echo "node:${REMOTE_PASSWORD}" | chpasswd
 
-RUN echo "root:node" | chpasswd
+RUN if [ "${SUDO_MODE}" != "none" ]; then \
+        if [ "${SUDO_MODE}" = "nopasswd" ]; then \
+            echo "node ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/node; \
+        else \
+            echo "node ALL=(ALL) ALL" > /etc/sudoers.d/node; \
+        fi && \
+        chmod 0440 /etc/sudoers.d/node; \
+    fi
 
 COPY --chown=root:root ./scripts/install-system-packages.sh /tmp/install-system-packages.sh
 RUN chmod +x /tmp/install-system-packages.sh && /tmp/install-system-packages.sh && rm /tmp/install-system-packages.sh

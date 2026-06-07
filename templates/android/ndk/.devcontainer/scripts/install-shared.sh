@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+REMOTE_USER="${REMOTE_USER:-developer}"
 
 echo "Installing shared tools..."
 
@@ -14,9 +15,9 @@ apt-get update
 apt-get install -y doppler google-cloud-cli
 
 # Detect target user: prefer 'node', fallback to 'root'
-if id node &>/dev/null; then
+if id ${REMOTE_USER} &>/dev/null; then
     TARGET_USER="node"
-    TARGET_HOME="/home/node"
+    TARGET_HOME="/home/${REMOTE_USER}"
 else
     TARGET_USER="root"
     TARGET_HOME="/root"

@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         GO_VERSION: ${GO_VERSION:-1.22.0}
+        __SECURITY_ARGS__
 
     volumes:
       - ..:/workspace:cached

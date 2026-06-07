@@ -7,6 +7,7 @@ services:
       dockerfile: Dockerfile
       args:
         PYTHON_VERSION: ${PYTHON_VERSION:-3.12}
+        __SECURITY_ARGS__
 
     volumes:
       - ..:/workspace:cached

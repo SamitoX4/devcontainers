@@ -15,24 +15,43 @@ Each template provides:
 
 ### General
 
-| Template | Description | Customizable Versions |
-|----------|-------------|----------------------|
-| `nodejs` | Node.js with TypeScript, npm/pnpm | Node versions (multi-select), Base image variant |
-| `java` | Java 17 + Maven | Java version, Maven version |
-| `laravel` | PHP 8.3 + Composer | PHP version |
-| `rust` | Rust (stable) + Cargo | Rust toolchain |
-| `go` | Go 1.22 | Go version |
-| `python` | Python 3.12 + pip | Python version |
+| Template | Description | Customizable Versions | Default Security Mode |
+|----------|-------------|----------------------|----------------------|
+| `nodejs` | Node.js with TypeScript, npm/pnpm | Node versions (multi-select), Base image variant | `developer` (user: `node`) |
+| `java` | Java 17 + Maven | Java version, Maven version | `developer` (user: `developer`) |
+| `laravel` | PHP 8.3 + Composer | PHP version | `developer` (user: `developer`) |
+| `rust` | Rust (stable) + Cargo | Rust toolchain | `developer` (user: `developer`) |
+| `go` | Go 1.22 | Go version | `developer` (user: `developer`) |
+| `python` | Python 3.12 + pip | Python version | `developer` (user: `developer`) |
 
 ### Android Stack
 
-| Template | Description | Customizable Versions |
-|----------|-------------|----------------------|
-| `android/java` | Java 17 + Android SDK | API Level, Build Tools, NDK, CMD Line Tools |
-| `android/kotlin-native` | Kotlin/Native + Android SDK | Kotlin, API Level, Build Tools, NDK, CMD Line Tools |
-| `android/ndk` | Android NDK + CMake | API Level, Build Tools, NDK, CMake, CMD Line Tools |
-| `android/react-native` | Node.js + React Native + Android SDK | Node version, API Level, Build Tools, NDK, CMD Line Tools |
-| `android/flutter` | Flutter + Android SDK | Flutter branch, API Level, Build Tools, NDK, CMD Line Tools |
+| Template | Description | Customizable Versions | Default Security Mode |
+|----------|-------------|----------------------|----------------------|
+| `android/java` | Java 17 + Android SDK | API Level, Build Tools, NDK, CMD Line Tools | `root` |
+| `android/kotlin-native` | Kotlin/Native + Android SDK | Kotlin, API Level, Build Tools, NDK, CMD Line Tools | `root` |
+| `android/ndk` | Android NDK + CMake | API Level, Build Tools, NDK, CMake, CMD Line Tools | `root` |
+| `android/react-native` | Node.js + React Native + Android SDK | Node version, API Level, Build Tools, NDK, CMD Line Tools | `developer` (user: `node`) |
+| `android/flutter` | Flutter + Android SDK | Flutter branch, API Level, Build Tools, NDK, CMD Line Tools | `root` |
+
+### Security Modes
+
+| Mode | remoteUser | sudo | Use Case |
+|------|-----------|------|----------|
+| `developer` | Dedicated dev user | `NOPASSWD:ALL` | Recommended balance of security & productivity |
+| `secure` | Dedicated dev user | `none` | Maximum security; install packages via Dockerfile only |
+| `root` | `root` | N/A | Administrative tasks, Android SDK access |
+| `custom` | Configurable | Configurable | Full control over all settings |
+
+All modes generate **random secure passwords** by default (displayed once after generation).
+
+Optionally, you can save them to a JSON file with owner-only permissions (600):
+
+```bash
+devc gen --template nodejs --name my-project --save-credentials default
+```
+
+This creates `~/.devc/credentials/my_project.json`.
 
 ## Quick Start
 

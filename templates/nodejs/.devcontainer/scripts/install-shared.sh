@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+REMOTE_USER="${REMOTE_USER:-developer}"
 
 echo "Installing shared tools..."
 
@@ -14,35 +15,35 @@ apt-get update
 apt-get install -y doppler google-cloud-cli
 
 # Install opencode and claude as node user
-if id node &>/dev/null; then
+if id ${REMOTE_USER} &>/dev/null; then
     echo "Installing opencode and claude for user 'node'..."
     
     # Create local bin directory if it doesn't exist
-    su - node -c "mkdir -p ~/.local/bin"
+    su - ${REMOTE_USER} -c "mkdir -p ~/.local/bin"
     
     # Install opencode
     echo "Installing opencode..."
-    if curl -fsSL https://opencode.ai/install 2>/dev/null | HOME=/home/node su - node -c "bash -s" 2>&1; then
+    if curl -fsSL https://opencode.ai/install 2>/dev/null | HOME=/home/${REMOTE_USER} su - ${REMOTE_USER} -c "bash -s" 2>&1; then
         echo "✓ opencode installed"
     else
         echo "⚠ opencode installation may have failed, trying alternative method..."
         OPENCODE_VERSION=$(curl -sL https://api.github.com/repos/opencode-ai/opencode/releases/latest 2>/dev/null | grep -oP '"tag_name":\s*"\K[^"]+' | sed 's/v//' || echo "latest")
-        su - node -c "cd /tmp && curl -fsSL https://github.com/opencode-ai/opencode/releases/download/v${OPENCODE_VERSION}/opencode-linux-x64.tar.gz -o opencode.tar.gz && tar -xzf opencode.tar.gz && mv opencode /home/node/.local/bin/ && chmod +x /home/node/.local/bin/opencode && rm -rf opencode opencode.tar.gz" 2>&1 || echo "⚠ opencode alternative install failed"
+        su - ${REMOTE_USER} -c "cd /tmp && curl -fsSL https://github.com/opencode-ai/opencode/releases/download/v${OPENCODE_VERSION}/opencode-linux-x64.tar.gz -o opencode.tar.gz && tar -xzf opencode.tar.gz && mv opencode /home/${REMOTE_USER}/.local/bin/ && chmod +x /home/${REMOTE_USER}/.local/bin/opencode && rm -rf opencode opencode.tar.gz" 2>&1 || echo "⚠ opencode alternative install failed"
     fi
     
     # Install claude
     echo "Installing claude..."
-    if curl -fsSL https://claude.ai/install.sh 2>/dev/null | HOME=/home/node su - node -c "bash -s" 2>&1; then
+    if curl -fsSL https://claude.ai/install.sh 2>/dev/null | HOME=/home/${REMOTE_USER} su - ${REMOTE_USER} -c "bash -s" 2>&1; then
         echo "✓ claude installed"
     else
         echo "⚠ claude installation may have failed, trying alternative method..."
         CLAUDE_VERSION=$(curl -sL https://api.github.com/repos/anthropics/claude-cli/releases/latest 2>/dev/null | grep -oP '"tag_name":\s*"\K[^"]+' | sed 's/v//' || echo "latest")
-        su - node -c "cd /tmp && curl -fsSL https://github.com/anthropics/claude-cli/releases/download/v${CLAUDE_VERSION}/claude-linux-x86_64.tar.gz -o claude.tar.gz && tar -xzf claude.tar.gz && mv claude /home/node/.local/bin/ && chmod +x /home/node/.local/bin/claude && rm -rf claude claude.tar.gz" 2>&1 || echo "⚠ claude alternative install failed"
+        su - ${REMOTE_USER} -c "cd /tmp && curl -fsSL https://github.com/anthropics/claude-cli/releases/download/v${CLAUDE_VERSION}/claude-linux-x86_64.tar.gz -o claude.tar.gz && tar -xzf claude.tar.gz && mv claude /home/${REMOTE_USER}/.local/bin/ && chmod +x /home/${REMOTE_USER}/.local/bin/claude && rm -rf claude claude.tar.gz" 2>&1 || echo "⚠ claude alternative install failed"
     fi
     
     # Verify installations
     echo "Verifying installations..."
-    su - node -c "echo 'PATH check:' && echo \$PATH | tr ':' '\n' | grep -E '(local/bin|nvm)' && echo 'opencode:' && which opencode 2>/dev/null || echo 'not found' && echo 'claude:' && which claude 2>/dev/null || echo 'not found'"
+    su - ${REMOTE_USER} -c "echo 'PATH check:' && echo \$PATH | tr ':' '\n' | grep -E '(local/bin|nvm)' && echo 'opencode:' && which opencode 2>/dev/null || echo 'not found' && echo 'claude:' && which claude 2>/dev/null || echo 'not found'"
 else
     echo "⚠ User 'node' not found, skipping user-specific installations"
 fi

@@ -8,6 +8,7 @@ services:
       args:
         VARIANT: ${NODE_VARIANT:-22-bullseye}
         NODE_MAJOR_VERSION: ${NODE_MAJOR_VERSION:-22}
+        __SECURITY_ARGS__
 
     volumes:
       - ..:/workspace:cached
