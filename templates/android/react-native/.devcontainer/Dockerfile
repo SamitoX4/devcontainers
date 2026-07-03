@@ -22,8 +22,8 @@ ENV CMDLINE_TOOLS_VERSION=${CMDLINE_TOOLS_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive
 
 # The user `node` already exists, just configure password and sudo
-RUN awk \'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}\' | chpasswd && \
-    awk \'BEGIN{print "node:" ENVIRON["REMOTE_PASSWORD"]}\' | chpasswd
+RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd && \
+    awk 'BEGIN{print "node:" ENVIRON["REMOTE_PASSWORD"]}' | chpasswd
 
 RUN if [ "${SUDO_MODE}" != "none" ]; then \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \

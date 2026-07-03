@@ -10,16 +10,18 @@ ENV SUDO_MODE=${SUDO_MODE}
 ENV JAVA_VERSION=${JAVA_VERSION}
 ENV JAVA_HOME=/usr/lib/jvm/java-${JAVA_VERSION}-openjdk-amd64
 ENV MAVEN_VERSION=${MAVEN_VERSION}
+ENV MAVEN_HOME=/opt/maven
+ENV PATH="${PATH}:${MAVEN_HOME}/bin:${JAVA_HOME}/bin"
 
 RUN apt-get update && apt-get install -y passwd sudo
 
-RUN awk \'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}\' | chpasswd
+RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd
 
 RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" &>/dev/null; then \
         useradd -m -s /bin/bash "${REMOTE_USER}"; \
     fi && \
     if [ "${REMOTE_USER}" != "root" ]; then \
-        awk -v u="\${REMOTE_USER}" \'BEGIN{print u ":" ENVIRON["REMOTE_PASSWORD"]}\' | chpasswd; \
+        awk 'BEGIN{print ENVIRON["REMOTE_USER"] ":" ENVIRON["REMOTE_PASSWORD"]}' | chpasswd; \
     fi
 
 RUN if [ "${SUDO_MODE}" != "none" ] && [ "${REMOTE_USER}" != "root" ]; then \

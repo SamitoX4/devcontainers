@@ -6,7 +6,7 @@ TMP_DIR=$(mktemp -d)
 cd $TMP_DIR
 
 echo "Descargando Maven..."
-wget -q https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
+wget -q https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz
 
 echo "Instalando Maven..."
 tar -xzf apache-maven-${MAVEN_VERSION}-bin.tar.gz -C /opt

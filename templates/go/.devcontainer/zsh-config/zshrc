@@ -1,0 +1,35 @@
+# ~/.zshrc — generado por .devcontainer/scripts/configure-system.sh
+# (copiado desde .devcontainer/zsh-config/zshrc). Edita ESE archivo en el repo,
+# no este, porque se sobrescribe en cada creación del contenedor.
+
+# Powerlevel10k instant prompt. Debe ir lo más arriba posible.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# ----- Oh My Zsh -----
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+# zsh-syntax-highlighting debe ir SIEMPRE al final de la lista.
+plugins=(
+  git
+  docker
+  npm
+  node
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+source "$ZSH/oh-my-zsh.sh"
+
+# ----- NVM -----
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+
+# ----- PATH (herramientas de usuario: opencode, claude, kimi-code) -----
+# Va DESPUÉS de oh-my-zsh/nvm para no ser sobreescrito.
+export PATH="$HOME/.opencode/bin:$HOME/.kimi-code/bin:$HOME/.local/bin:$PATH"
+
+# ----- Powerlevel10k -----
+# Para personalizar, ejecuta `p10k configure` o edita ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

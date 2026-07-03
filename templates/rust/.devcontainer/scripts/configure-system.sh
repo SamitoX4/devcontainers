@@ -25,20 +25,25 @@ fc-cache -fv
 echo "Instalando Powerlevel10k..."
 git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k
 
-echo "Clonando configuraciones personalizadas..."
-git clone https://github.com/SamitoX4/oh-my-sh-configuration.git ~/.oh-my-zsh-samito
+echo "Instalando plugins de oh-my-zsh..."
+[ -d ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions ] || \
+  git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+[ -d ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting ] || \
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-cp ~/.oh-my-zsh-samito/p10k.zsh-template-custom-samito ~/.p10k.zsh
-cp ~/.oh-my-zsh-samito/zshrc.zsh-template-custom-samito ~/.zshrc
+echo "Aplicando configuración local de zsh (.devcontainer/zsh-config)..."
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ZSH_CONFIG_DIR="$(dirname "$SCRIPT_DIR")/zsh-config"
+
+if [ -f "$ZSH_CONFIG_DIR/zshrc" ]; then
+    cp "$ZSH_CONFIG_DIR/zshrc" ~/.zshrc
+fi
+if [ -f "$ZSH_CONFIG_DIR/p10k.zsh" ]; then
+    cp "$ZSH_CONFIG_DIR/p10k.zsh" ~/.p10k.zsh
+fi
 
 rm -f ${font_name}
 
 echo "DevContainer configurado correctamente"
-
-
-# Clean up NVM references in .zshrc for non-Node.js templates
-if [ ! -f "$HOME/.nvm/nvm.sh" ]; then
-    awk '/# NVM Configuration/{skip=1; next} skip && /source [$]NVM_DIR\/nvm.sh/{skip=0; next} skip{next} 1' ~/.zshrc > ~/.zshrc.tmp && mv ~/.zshrc.tmp ~/.zshrc
-fi
 
 exec zsh

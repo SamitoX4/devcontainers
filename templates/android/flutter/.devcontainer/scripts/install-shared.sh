@@ -48,6 +48,14 @@ else
     su - "${TARGET_USER}" -c "cd /tmp && curl -fsSL https://github.com/anthropics/claude-cli/releases/download/v${CLAUDE_VERSION}/claude-linux-x86_64.tar.gz -o claude.tar.gz && tar -xzf claude.tar.gz && mv claude ${TARGET_HOME}/.local/bin/ && chmod +x ${TARGET_HOME}/.local/bin/claude && rm -rf claude claude.tar.gz" 2>&1 || echo "⚠ claude alternative install failed"
 fi
 
+# Install kimi-code
+echo "Installing kimi-code..."
+if curl -fsSL https://code.kimi.com/kimi-code/install.sh 2>/dev/null | HOME="${TARGET_HOME}" su - "${TARGET_USER}" -c "bash -s" 2>&1; then
+    echo "✓ kimi-code installed"
+else
+    echo "⚠ kimi-code installation may have failed"
+fi
+
 # Verify installations
 echo "Verifying installations..."
 su - "${TARGET_USER}" -c "echo 'PATH check:' && echo \$PATH | tr ':' '\n' | grep -E '(local/bin|nvm)' && echo 'opencode:' && which opencode 2>/dev/null || echo 'not found' && echo 'claude:' && which claude 2>/dev/null || echo 'not found'"

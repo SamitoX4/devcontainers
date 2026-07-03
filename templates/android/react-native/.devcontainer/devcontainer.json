@@ -35,6 +35,7 @@
       ],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.fontFamily": "'MesloLGS NF', monospace",
         "terminal.integrated.profiles.linux": {
           "zsh": {
             "path": "/bin/zsh",
