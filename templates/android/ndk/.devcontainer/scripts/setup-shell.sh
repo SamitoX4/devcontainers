@@ -1,7 +1,11 @@
 #!/bin/bash
 set -e
 REMOTE_USER="${REMOTE_USER:-developer}"
-USER_HOME="/home/${REMOTE_USER}"
+if [ "${REMOTE_USER}" = "root" ]; then
+    USER_HOME="/root"
+else
+    USER_HOME="/home/${REMOTE_USER}"
+fi
 
 echo 'export PATH=$PATH:$HOME/.local/bin' >> "${USER_HOME}/.bashrc"
 echo 'export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64' >> "${USER_HOME}/.bashrc"

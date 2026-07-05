@@ -22,10 +22,13 @@ ENV CMDLINE_TOOLS_VERSION=${CMDLINE_TOOLS_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive
 
 # The user `node` already exists, just configure password and sudo
+RUN apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*
+
 RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd && \
     awk 'BEGIN{print "node:" ENVIRON["REMOTE_PASSWORD"]}' | chpasswd
 
 RUN if [ "${SUDO_MODE}" != "none" ]; then \
+        mkdir -p /etc/sudoers.d; \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \
             echo "node ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/node; \
         else \

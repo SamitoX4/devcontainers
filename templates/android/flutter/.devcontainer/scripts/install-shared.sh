@@ -14,10 +14,14 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /u
 apt-get update
 apt-get install -y doppler google-cloud-cli
 
-# Detect target user: prefer 'node', fallback to 'root'
-if id ${REMOTE_USER} &>/dev/null; then
-    TARGET_USER="node"
-    TARGET_HOME="/home/${REMOTE_USER}"
+# Detect target user: use REMOTE_USER if it exists, fallback to 'root'
+if id ${REMOTE_USER} >/dev/null 2>&1; then
+    TARGET_USER="${REMOTE_USER}"
+    if [ "${REMOTE_USER}" = "root" ]; then
+        TARGET_HOME="/root"
+    else
+        TARGET_HOME="/home/${REMOTE_USER}"
+    fi
 else
     TARGET_USER="root"
     TARGET_HOME="/root"

@@ -1,19 +1,26 @@
 #!/bin/bash
 set -e
-REMOTE_USER="${REMOTE_USER:-developer}"
+# Este template usa el usuario `node` que ya viene en la imagen base node:<variant>
+REMOTE_USER="node"
 
-echo 'source $NVM_DIR/nvm.sh' >> /home/${REMOTE_USER}/.bashrc
-echo 'source $NVM_DIR/nvm.sh' >> /home/${REMOTE_USER}/.zshrc
-echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/${REMOTE_USER}/.bashrc
-echo 'export PATH=$PATH:$HOME/.local/bin' >> /home/${REMOTE_USER}/.zshrc
+if [ "${REMOTE_USER}" = "root" ]; then
+    USER_HOME="/root"
+else
+    USER_HOME="/home/${REMOTE_USER}"
+fi
 
-cat >> /home/${REMOTE_USER}/.bashrc << 'EOF'
+echo 'source $NVM_DIR/nvm.sh' >> ${USER_HOME}/.bashrc
+echo 'source $NVM_DIR/nvm.sh' >> ${USER_HOME}/.zshrc
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ${USER_HOME}/.bashrc
+echo 'export PATH=$PATH:$HOME/.local/bin' >> ${USER_HOME}/.zshrc
+
+cat >> ${USER_HOME}/.bashrc << 'EOF'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export ANDROID_SDK_ROOT=/usr/local/android-sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/platform-tools
 EOF
 
-cat >> /home/${REMOTE_USER}/.zshrc << 'EOF'
+cat >> ${USER_HOME}/.zshrc << 'EOF'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export ANDROID_SDK_ROOT=/usr/local/android-sdk
 export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/platform-tools

@@ -15,7 +15,7 @@ apt-get update
 apt-get install -y doppler google-cloud-cli
 
 # Install opencode and claude as node user
-if id ${REMOTE_USER} &>/dev/null; then
+if id ${REMOTE_USER} >/dev/null 2>&1; then
     echo "Installing opencode and claude for user 'node'..."
     
     # Create local bin directory if it doesn't exist

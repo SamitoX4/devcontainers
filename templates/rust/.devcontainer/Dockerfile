@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y passwd sudo
 
 RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd
 
-RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" &>/dev/null; then \
+RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" >/dev/null 2>&1; then \
         useradd -m -s /bin/bash "${REMOTE_USER}"; \
     fi && \
     if [ "${REMOTE_USER}" != "root" ]; then \

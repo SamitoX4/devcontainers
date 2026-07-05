@@ -13,7 +13,7 @@ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | gpg --dearmor -o /u
 apt-get update
 apt-get install -y doppler google-cloud-cli
 
-if id ${REMOTE_USER} &>/dev/null; then
+if id ${REMOTE_USER} >/dev/null 2>&1; then
     echo "Installing opencode and claude for user 'node'..."
     su - ${REMOTE_USER} -c "mkdir -p ~/.local/bin"
     
