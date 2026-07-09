@@ -20,6 +20,7 @@ RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" >/dev/null 2>&1; 
     fi
 
 RUN if [ "${SUDO_MODE}" != "none" ] && [ "${REMOTE_USER}" != "root" ]; then \
+        mkdir -p /etc/sudoers.d; \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \
             echo "${REMOTE_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${REMOTE_USER}; \
         else \

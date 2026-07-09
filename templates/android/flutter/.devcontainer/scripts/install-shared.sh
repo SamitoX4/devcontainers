@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-REMOTE_USER="${REMOTE_USER:-developer}"
+REMOTE_USER="${REMOTE_USER:-node}"
 
 echo "Installing shared tools..."
 
@@ -31,6 +31,7 @@ echo "Installing opencode and claude for user '${TARGET_USER}'..."
 
 # Create local bin directory if it doesn't exist
 mkdir -p "${TARGET_HOME}/.local/bin"
+chown -R "${TARGET_USER}:${TARGET_USER}" "${TARGET_HOME}/.local"
 
 # Install opencode
 echo "Installing opencode..."

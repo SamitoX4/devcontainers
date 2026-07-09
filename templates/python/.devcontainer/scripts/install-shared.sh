@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-REMOTE_USER="${REMOTE_USER:-developer}"
+REMOTE_USER="${REMOTE_USER:-node}"
 
 echo "Installing shared tools..."
 
@@ -16,6 +16,7 @@ apt-get install -y doppler google-cloud-cli
 if id ${REMOTE_USER} >/dev/null 2>&1; then
     echo "Installing opencode and claude for user 'node'..."
     su - ${REMOTE_USER} -c "mkdir -p ~/.local/bin"
+    chown -R "${REMOTE_USER}:${REMOTE_USER}" "/home/${REMOTE_USER}/.local"
     
     echo "Installing opencode..."
     if curl -fsSL https://opencode.ai/install 2>/dev/null | HOME=/home/${REMOTE_USER} su - ${REMOTE_USER} -c "bash -s" 2>&1; then

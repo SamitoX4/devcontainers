@@ -17,11 +17,11 @@ echo 'export PATH=$PATH:$HOME/.local/bin' >> ${USER_HOME}/.zshrc
 cat >> ${USER_HOME}/.bashrc << 'EOF'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export ANDROID_SDK_ROOT=/usr/local/android-sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools
 EOF
 
 cat >> ${USER_HOME}/.zshrc << 'EOF'
 export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 export ANDROID_SDK_ROOT=/usr/local/android-sdk
-export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools
 EOF

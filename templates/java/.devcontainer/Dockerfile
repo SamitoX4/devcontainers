@@ -1,6 +1,8 @@
 ARG JAVA_VERSION=17
 ARG MAVEN_VERSION=3.9.6
 FROM debian:bullseye
+ARG JAVA_VERSION
+ARG MAVEN_VERSION
 __SECURITY_ARGS__
 ENV REMOTE_USER=${REMOTE_USER}
 ENV REMOTE_PASSWORD=${REMOTE_PASSWORD}
@@ -25,6 +27,7 @@ RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" >/dev/null 2>&1; 
     fi
 
 RUN if [ "${SUDO_MODE}" != "none" ] && [ "${REMOTE_USER}" != "root" ]; then \
+        mkdir -p /etc/sudoers.d; \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \
             echo "${REMOTE_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${REMOTE_USER}; \
         else \

@@ -48,10 +48,15 @@
         },
         "java.home": "/usr/lib/jvm/java-17-openjdk-amd64",
         "java.configuration.runtimes": [
-          {"name": "JavaSE-17", "path": "/usr/lib/jvm/java-17-openjdk-amd64", "default": true}
+          {
+            "name": "JavaSE-17",
+            "path": "/usr/lib/jvm/java-17-openjdk-amd64",
+            "default": true
+          }
         ]
       }
     }
   },
-  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh"
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "node"
 }

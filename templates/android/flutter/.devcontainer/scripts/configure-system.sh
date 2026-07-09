@@ -18,9 +18,12 @@ echo "Instalando FiraCode Nerd Font..."
 font_url='https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip'
 font_name=${font_url##*/}
 
-wget -q ${font_url}
-unzip -q ${font_name} -d ~/.fonts
-fc-cache -fv
+if curl -fsSL -o "${font_name}" "${font_url}"; then
+    unzip -q "${font_name}" -d ~/.fonts
+    fc-cache -fv
+else
+    echo "Advertencia: no se pudo descargar FiraCode, continuando sin la fuente"
+fi
 
 echo "Instalando Powerlevel10k..."
 git clone https://github.com/romkatv/powerlevel10k.git ~/.oh-my-zsh/custom/themes/powerlevel10k

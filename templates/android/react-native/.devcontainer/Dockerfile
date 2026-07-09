@@ -48,7 +48,7 @@ RUN chmod +x /tmp/install-shared.sh && /tmp/install-shared.sh && rm /tmp/install
 
 ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
 ENV ANDROID_SDK_ROOT=/usr/local/android-sdk
-ENV PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/bin:$ANDROID_SDK_ROOT/platform-tools"
+ENV PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools"
 
 COPY --chown=node:node ./scripts/install-nvm.sh /home/node/install-nvm.sh
 RUN chmod +x /home/node/install-nvm.sh

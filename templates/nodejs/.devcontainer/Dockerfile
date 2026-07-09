@@ -14,6 +14,7 @@ RUN awk 'BEGIN{print "root:" ENVIRON["CONTAINER_PASSWORD"]}' | chpasswd && \
     awk 'BEGIN{print "node:" ENVIRON["REMOTE_PASSWORD"]}' | chpasswd
 
 RUN if [ "${SUDO_MODE}" != "none" ]; then \
+        mkdir -p /etc/sudoers.d; \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \
             echo "node ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/node; \
         else \

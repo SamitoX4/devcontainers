@@ -36,5 +36,6 @@
       }
     }
   },
-  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh"
+  "postCreateCommand": "sh .devcontainer/scripts/configure-system.sh",
+  "remoteUser": "node"
 }

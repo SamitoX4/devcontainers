@@ -7,6 +7,11 @@ FLUTTER_BRANCH="${FLUTTER_BRANCH:-stable}"
 echo "Clonando Flutter ${FLUTTER_BRANCH}..."
 git clone https://github.com/flutter/flutter.git -b "${FLUTTER_BRANCH}" --depth 1 "$FLUTTER_DIR"
 
+# Asegurar que el usuario remoto pueda ejecutar flutter sin problemas de ownership
+REMOTE_USER="${REMOTE_USER:-node}"
+chown -R "${REMOTE_USER}:${REMOTE_USER}" "$FLUTTER_DIR"
+git config --system --add safe.directory "$FLUTTER_DIR" || true
+
 export PATH="$PATH:${FLUTTER_DIR}/bin"
 
 echo "Ejecutando flutter doctor..."

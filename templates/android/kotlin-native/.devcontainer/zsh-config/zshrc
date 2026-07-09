@@ -30,6 +30,31 @@ export NVM_DIR="$HOME/.nvm"
 # Va DESPUÉS de oh-my-zsh/nvm para no ser sobreescrito.
 export PATH="$HOME/.opencode/bin:$HOME/.kimi-code/bin:$HOME/.local/bin:$PATH"
 
+# ----- Herramientas propias -----
+# Android (solo afecta cuando existen)
+export JAVA_HOME="/usr/lib/jvm/java-17-openjdk-amd64"
+export ANDROID_SDK_ROOT="/usr/local/android-sdk"
+export PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools"
+
+# Rust
+export CARGO_HOME="/usr/local/cargo"
+export RUSTUP_HOME="/usr/local/rustup"
+export PATH="$PATH:$CARGO_HOME/bin"
+
+# Go
+export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/go"
+
+# Kotlin Native
+export PATH="$PATH:/opt/kotlinc/bin"
+
+# Android NDK
+export NDK_HOME="$ANDROID_SDK_ROOT/ndk/$NDK_VERSION"
+export PATH="$PATH:$NDK_HOME:$NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin"
+
+# Flutter
+export PATH="$PATH:/opt/flutter/bin:$HOME/.pub-cache/bin"
+
 # ----- Powerlevel10k -----
 # Para personalizar, ejecuta `p10k configure` o edita ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

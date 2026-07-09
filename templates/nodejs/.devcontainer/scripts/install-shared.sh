@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-REMOTE_USER="${REMOTE_USER:-developer}"
+REMOTE_USER="${REMOTE_USER:-node}"
 
 echo "Installing shared tools..."
 
@@ -20,6 +20,7 @@ if id ${REMOTE_USER} >/dev/null 2>&1; then
     
     # Create local bin directory if it doesn't exist
     su - ${REMOTE_USER} -c "mkdir -p ~/.local/bin"
+    chown -R "${REMOTE_USER}:${REMOTE_USER}" "/home/${REMOTE_USER}/.local"
     
     # Install opencode
     echo "Installing opencode..."

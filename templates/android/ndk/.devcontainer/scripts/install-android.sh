@@ -16,10 +16,14 @@ wget -q "https://dl.google.com/android/repository/commandlinetools-linux-${CMD_L
 
 echo "Extrayendo en ${ANDROID_SDK_ROOT}..."
 mkdir -p "${ANDROID_SDK_ROOT}"
-unzip -q cmdline-tools.zip -d "${ANDROID_SDK_ROOT}"
+unzip -q cmdline-tools.zip -d "${ANDROID_SDK_ROOT}/tmp_cmdline"
 rm -f cmdline-tools.zip
 
-export PATH="$PATH:${ANDROID_SDK_ROOT}/cmdline-tools/bin"
+mkdir -p "${ANDROID_SDK_ROOT}/cmdline-tools/latest"
+mv "${ANDROID_SDK_ROOT}/tmp_cmdline/cmdline-tools/"* "${ANDROID_SDK_ROOT}/cmdline-tools/latest/" 2>/dev/null || true
+rm -rf "${ANDROID_SDK_ROOT}/tmp_cmdline"
+
+export PATH="$PATH:${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin"
 
 echo "Aceptando licencias y actualizando SDK..."
 yes | sdkmanager --sdk_root="${ANDROID_SDK_ROOT}" --update

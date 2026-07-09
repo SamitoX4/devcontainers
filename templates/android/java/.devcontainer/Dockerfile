@@ -17,6 +17,9 @@ ENV BUILD_TOOLS_VERSION=${BUILD_TOOLS_VERSION}
 ENV NDK_VERSION=${NDK_VERSION}
 ENV CMDLINE_TOOLS_VERSION=${CMDLINE_TOOLS_VERSION}
 ENV DEBIAN_FRONTEND=noninteractive
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV ANDROID_SDK_ROOT=/usr/local/android-sdk
+ENV PATH="$PATH:$ANDROID_SDK_ROOT/cmdline-tools/latest/bin:$ANDROID_SDK_ROOT/platform-tools"
 
 RUN apt-get update && apt-get install -y passwd sudo
 
@@ -30,6 +33,7 @@ RUN if [ "${REMOTE_USER}" != "root" ] && ! id "${REMOTE_USER}" >/dev/null 2>&1; 
     fi
 
 RUN if [ "${SUDO_MODE}" != "none" ] && [ "${REMOTE_USER}" != "root" ]; then \
+        mkdir -p /etc/sudoers.d; \
         if [ "${SUDO_MODE}" = "nopasswd" ]; then \
             echo "${REMOTE_USER} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/${REMOTE_USER}; \
         else \
